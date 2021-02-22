@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',        // Working with just one file for now
+    entry: './src/index.js',
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
@@ -12,7 +12,10 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
         new HtmlWebpackPlugin({
-            title: 'Development',
+            title: 'Development | Test App',
+            template: path.resolve(__dirname, 'src', 'template.hbs'),
+            inject: 'body',
+            hash: true,
         }),
     ],
     output: {
@@ -22,15 +25,16 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(js|jsx)$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: { presets: ['@babel/preset-env'] }
+                }
+            },
+            {
                 test: /\.s[ac]ss$/i,
-                use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
-                ],
+                use: ["style-loader", "css-loader", "sass-loader"],
             },
             {
                 test: /\.css$/i,
