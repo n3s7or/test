@@ -1,0 +1,56 @@
+@import "~normalize.css";
+
+input[type="text"] {
+  -webkit-box-sizing: border-box; // Safari/Chrome, other WebKit
+  -moz-box-sizing: border-box;    // Firefox, other Gecko
+  box-sizing: border-box;         // Opera/IE 8+
+}
+
+body {
+  background: lightgrey;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+section {
+  margin-top: 25px;
+  background: white;
+  width: 69%;
+}
+
+.button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 7px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 2px;
+  transition-duration: 0.4s;
+  border: #4CAF50 1px solid;
+}
+
+.button:hover {
+  background-color: white;
+  color: #4CAF50;
+  border: #4CAF50 1px solid;
+}
+
+.border-top {
+  border-top: black 1px solid;
+}
+
+.border-bottom {
+  border-bottom: black 1px solid;
+}
+
+span.small {
+  font-size: smaller;
+  color: grey;
+}

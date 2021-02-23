@@ -1,0 +1,14 @@
+section {
+  input[type="text"] {
+    margin: 10px 7px;
+    padding: 5px 5px;
+    border-style: none;
+    width: 97%;
+  }
+}
+
+.left {
+  display: flex;
+  justify-content: end;
+  padding: 5px;
+}
