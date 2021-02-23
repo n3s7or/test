@@ -1,4 +1,9 @@
-@import "../../scss/global";
+@import "../../scss/variables";
+
+.comments {
+  display: flex;
+  flex-direction: column;
+}
 
 .comment-container {
   display: flex;
@@ -6,17 +11,35 @@
   padding: 15px 5px;
 }
 
-.comment-text {
+.comment-summary-mobile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
+  p {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 10px 8px;
+  }
 }
 
-.comment-actions {
+.comment-actions-mobile {
   display: flex;
-  align-items: start;
-  justify-content: start;
+  //align-items: center;
+  justify-content: space-evenly;
   a {
-    padding-right: 3rem;
+    margin: 0;
+    padding: 10px 1px;
+    text-decoration: none;
   }
+
+  .divider {
+    background: $line-color;
+  }
+}
+
+.push {
+  margin-left: auto;
 }
 
 div .media img {
@@ -30,5 +53,24 @@ div.content {
     h4 {
       margin: 15px 0 0 0;
     }
+  }
+}
+
+.comment-replies {
+  background-color: $bg-color;
+
+  input[type="text"] {
+    padding: 5px 5px;
+    margin: 2px 5px;
+    border-style: none;
+    width: 97%;
+  }
+}
+
+.reply {
+  * {
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 2px;
   }
 }

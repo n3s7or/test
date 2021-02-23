@@ -3,7 +3,7 @@ import "./publish.scss";
 
 export default function Publish() {
     return (
-        <section>
+        <section className="border publish">
             <input
                 type="text"
                 id="state"
