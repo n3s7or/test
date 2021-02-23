@@ -1,8 +1,10 @@
 import React from "react";
+import Reply from "./reply";
 import "./comment.scss";
 import Thumbnail from "./60x60.png";
 
-export default function Comment() {
+export default function Comment({data}) {
+    let {name, date, avatar, comment, replies} = data;
     return (
         <section className="comments border">
             {/*Comment container*/}
@@ -12,12 +14,12 @@ export default function Comment() {
                 </div>
                 <div className="content">
                     <header>
-                        <h4>Juan Perez Sipriano</h4>
-                        <span className="small">Hace 41 minutos</span>
+                        <h4>{name}</h4>
+                        <span className="small">{date}</span>
                     </header>
                     <main>
                         <div className="comment-text">
-                            <p>Lorem ipsum kamikaze</p>
+                            <p>{comment}</p>
                         </div>
                     </main>
                 </div>
@@ -26,7 +28,7 @@ export default function Comment() {
             {/*Comments summary*/}
             <div className="comment-summary-mobile border-top">
                 <p>000</p>
-                <p className="push"><span>3</span> comentarios</p>
+                <p className="push"><span>{replies.length > 0 ? replies.length : "0"}</span> comentarios</p>
             </div>
 
             {/*Comments actions*/}
@@ -39,38 +41,18 @@ export default function Comment() {
             {/*Comment replies */}
             <div className="comment-replies">
                 {/*Start replies*/}
-                <div className="comment-container">
-                    <div className="media">
-                        <img src={Thumbnail} alt="placeholder"/>
-                    </div>
-                    <div className="content">
-                        <div className="reply">
-                            <h4>Juan</h4>
-                            <div className="comment-text">
-                                <p>Lorem ipsum kamikaze. </p>
-                            </div>
-                        </div>
-                        <span className="small">Hace 2 minutos</span>
-                    </div>
-                </div>
 
-                <div className="comment-container">
-                    <div className="media">
-                        <img src={Thumbnail} alt="placeholder"/>
-                    </div>
-                    <div className="content">
-                        <div className="reply">
-                            <h4>Juan</h4>
-                            <div className="comment-text">
-                                <p>Lorem ipsum kamikaze.</p>
-                            </div>
-                        </div>
-                        <span className="small">Hace 2 minutos</span>
-                    </div>
-                </div>
+                {replies.map((reply, index)=>(
+                    <Reply
+                        key={index}
+                        data={reply}
+                    />
+                ))}
 
                 {/*End replies*/}
-                <input type="text" name="reply" placeholder="Escribe un comentario"/>
+                { replies.length > 0 &&
+                    <input type="text" name="reply" placeholder="Escribe un comentario"/>
+                }
             </div>
         </section>
     )

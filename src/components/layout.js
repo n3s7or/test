@@ -2,8 +2,9 @@ import React from "react";
 import Publish from "./publish/publish";
 import Comment from "./comment/comment.js";
 import Navbar from "./navbar/navbar";
-import {BiMenu} from "react-icons/bi";
 import {IconContext} from "react-icons";
+import data from "../data.json";
+
 
 export default function Layout() {
     return(
@@ -11,7 +12,12 @@ export default function Layout() {
             <div className="main">
                 <Navbar />
                 <Publish />
-                <Comment />
+                {data.map((comment, index)=>(
+                    <Comment
+                        key={index}
+                        data={comment}
+                    />
+                ))}
             </div>
         </IconContext.Provider>
     );
