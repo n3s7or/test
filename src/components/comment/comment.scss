@@ -8,7 +8,7 @@
 .comment-container {
   display: flex;
   align-items: flex-start;
-  padding: 15px 5px;
+  padding: 8px 5px;
 }
 
 .comment-summary-mobile {
@@ -45,7 +45,7 @@
 div .media img {
   margin: 5px;
   border-radius: 50%;
-  padding: 15px 7px;
+  padding: 8px;
 }
 
 div.content {
@@ -58,10 +58,13 @@ div.content {
 
 .comment-replies {
   background-color: $bg-color;
+  display: flex;
+  flex-direction: column;
 
   input[type="text"] {
+    align-self: center;
     padding: 5px 5px;
-    margin: 2px 5px;
+    margin-bottom: 15px;
     border-style: none;
     width: 97%;
   }

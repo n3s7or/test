@@ -38,6 +38,7 @@ export default function Comment() {
 
             {/*Comment replies */}
             <div className="comment-replies">
+                {/*Start replies*/}
                 <div className="comment-container">
                     <div className="media">
                         <img src={Thumbnail} alt="placeholder"/>
@@ -46,12 +47,29 @@ export default function Comment() {
                         <div className="reply">
                             <h4>Juan</h4>
                             <div className="comment-text">
-                                <p>Lorem ipsum kamikaze. this is a really long reply to that fucking message tou did</p>
+                                <p>Lorem ipsum kamikaze. </p>
                             </div>
                         </div>
                         <span className="small">Hace 2 minutos</span>
                     </div>
                 </div>
+
+                <div className="comment-container">
+                    <div className="media">
+                        <img src={Thumbnail} alt="placeholder"/>
+                    </div>
+                    <div className="content">
+                        <div className="reply">
+                            <h4>Juan</h4>
+                            <div className="comment-text">
+                                <p>Lorem ipsum kamikaze.</p>
+                            </div>
+                        </div>
+                        <span className="small">Hace 2 minutos</span>
+                    </div>
+                </div>
+
+                {/*End replies*/}
                 <input type="text" name="reply" placeholder="Escribe un comentario"/>
             </div>
         </section>
