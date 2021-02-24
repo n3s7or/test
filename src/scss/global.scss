@@ -12,6 +12,10 @@ body {
   background: $bg-color;
 }
 
+h4 {
+  color: $text-color-primary;
+}
+
 .main {
   display: flex;
   justify-content: center;
@@ -67,6 +71,10 @@ section {
 span.small {
   font-size: smaller;
   color: grey;
+}
+
+.color-primary {
+  color: $text-color-primary;
 }
 
 @media only screen and (min-width: 768px) {

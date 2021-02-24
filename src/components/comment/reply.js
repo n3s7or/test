@@ -13,7 +13,7 @@ export default function Reply({data}) {
             </div>
             <div className="content">
                 <div className="reply">
-                    <h4>{name}</h4>
+                    <h4>{name.split(' ')[0]}</h4>
                     <div className="comment-text">
                         <p>{comment}</p>
                     </div>

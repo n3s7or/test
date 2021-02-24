@@ -1,9 +1,12 @@
+@import "src/scss/variables";
+
 section.publish {
   input[type="text"] {
     margin: 0 7px;
     padding: 5px;
     border-style: none;
     width: 97%;
+    color: $text-color-primary;
   }
 }
 

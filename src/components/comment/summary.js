@@ -16,10 +16,11 @@ export default function Summary({comments, reactions}) {
                     <span className="circle" style={{backgroundColor: "yellow"}}/>
                 }
             </p>
+            {reactions > 0 &&
+                <p className="color-primary">{reactions}</p>
+            }
 
-            <p>{reactions}</p>
-
-            <p className="push">{comments > 0 &&
+            <p className="push" id="comments-summary">{comments > 0 &&
             <span>{comments} comentario{comments > 1 ? 's' : ''}</span>
             }
             </p>
