@@ -23,6 +23,15 @@
   }
 }
 
+span.circle {
+  display: inline-block;
+  border-radius: 50%;
+  border: white 2px solid;
+  width: 20px;
+  height: 20px;
+  margin-right: -8px;
+}
+
 .comment-actions-mobile {
   display: flex;
   //align-items: center;

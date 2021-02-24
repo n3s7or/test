@@ -13,11 +13,19 @@ class App extends React.Component{
         super(props);
 
         this.state = {
-            data: data,
-            user: 'Juan Perex'
+            data: [],
+            user: ''
         }
 
         this.addReply = this.addReply.bind(this);
+        this.addReaction = this.addReaction.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({
+            data: data,
+            user: 'Juan Perex'
+        })
     }
 
     addReply(commentId, comment) {
@@ -51,6 +59,27 @@ class App extends React.Component{
         return true;
     }
 
+    addReaction(id) {
+    //    This basically add a new reaction to the comment
+        let index = this.state.data.findIndex((v,i, arr)=>arr[i].id===id);
+        if (index === -1) {
+            return false;
+        }
+
+        this.setState((state, props) => ({
+            data: [
+                ...state.data.slice(0, index),
+                Object.assign(
+                    {},
+                    state.data[index],
+                    {
+                        "reactions": state.data[index].reactions + 1
+                    }),
+                ...state.data.slice(index + 1)
+            ]
+        }))
+    }
+
     render(){
         return(
             <IconContext.Provider value={{ size: "1.5em" }}>
@@ -62,6 +91,7 @@ class App extends React.Component{
                             key={comment.id}
                             data={comment}
                             addReply={this.addReply}
+                            addReaction={this.addReaction}
                         />
                     ))}
                 </div>

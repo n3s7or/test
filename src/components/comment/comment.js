@@ -1,13 +1,14 @@
 import React, {useState} from "react";
 import Reply from "./reply";
+import Summary from "./summary";
 import TimeAgo from "../timeago/timeago";
 import "./comment.scss";
 import Thumbnail from "./60x60.png";
 
 
-export default function Comment({data, addReply}) {
+export default function Comment({data, addReply, addReaction}) {
     let {
-        id, name, date, avatar, comment, replies,
+        id, name, date, avatar, comment, replies, reactions
     } = data;
 
     const [showCommentInput, setShowCommentInput] = useState(replies.length > 0);
@@ -35,16 +36,23 @@ export default function Comment({data, addReply}) {
             {/*End comment container*/}
 
             {/*Comments summary*/}
-            <div className="comment-summary-mobile border-top">
-                <p>000</p>
-                <p className="push"><span>{replies.length > 0 ? replies.length : "0"}</span> comentarios</p>
-            </div>
+            { (replies.length > 0 || reactions > 0) &&
+                <Summary
+                    comments={replies.length}
+                    reactions={reactions}
+                />
+            }
             {/*End comment summary*/}
 
             {/*Comments actions*/}
             <div className="comment-actions-mobile border-bottom border-top">
-                <a href="#">Reaccionar</a>
+                <a href="#" onClick={(e)=>{
+                    e.preventDefault();
+                    addReaction(id)
+                }}>Reaccionar</a>
+
                 <a className="divider" />
+
                 <a href="#" onClick={(e)=>{
                     e.preventDefault();
                     setShowCommentInput(true);
