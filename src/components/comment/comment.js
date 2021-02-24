@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import Reply from "./reply";
 import "./comment.scss";
 import Thumbnail from "./60x60.png";
 
 export default function Comment({data}) {
     let {name, date, avatar, comment, replies} = data;
+
+    const [showCommentInput, setShowCommentInput] = useState(replies.length > 0);
+    const [commentValue, setCommentValue] = useState("");
+
     return (
         <section className="comments border">
             {/*Comment container*/}
@@ -35,7 +39,10 @@ export default function Comment({data}) {
             <div className="comment-actions-mobile border-bottom border-top">
                 <a href="#">Reaccionar</a>
                 <a className="divider" />
-                <a href="#">Comentar</a>
+                <a href="#" onClick={(e)=>{
+                    e.preventDefault();
+                    setShowCommentInput(true)
+                }}>Comentar</a>
             </div>
 
             {/*Comment replies */}
@@ -50,10 +57,23 @@ export default function Comment({data}) {
                 ))}
 
                 {/*End replies*/}
-                { replies.length > 0 &&
-                    <input type="text" name="reply" placeholder="Escribe un comentario"/>
-                }
             </div>
+            { showCommentInput > 0 &&
+
+            <form onSubmit={(e)=> {
+                e.preventDefault();
+                console.log('yay')
+            }}><input
+                type="text"
+                name="reply"
+                placeholder="Escribe un comentario"
+                value={commentValue}
+                onChange={(e)=>{
+                    setCommentValue(e.target.value)
+                }}
+                // onKeyPress={handleKeyPress}
+            /></form>
+            }
         </section>
     )
 }

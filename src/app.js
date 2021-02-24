@@ -9,15 +9,23 @@ import {IconContext} from "react-icons";
 import data from "./data.json";
 
 class App extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: data,
+        }
+    }
+
     render(){
         return(
             <IconContext.Provider value={{ size: "1.5em" }}>
                 <div className="main">
                     <Navbar />
                     <Publish />
-                    {data.map((comment, index)=>(
+                    {this.state.data.map((comment)=>(
                         <Comment
-                            key={index}
+                            key={comment.id}
                             data={comment}
                         />
                     ))}
