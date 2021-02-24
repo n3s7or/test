@@ -14,7 +14,41 @@ class App extends React.Component{
 
         this.state = {
             data: data,
+            user: 'Juan Perex'
         }
+
+        this.addReply = this.addReply.bind(this);
+    }
+
+    addReply(commentId, comment) {
+        if (!comment.trim())
+            return false;
+
+        let index = this.state.data.findIndex((v,i, arr)=>arr[i].id===commentId);
+        if (index === -1) {
+            return false;
+        }
+
+        this.setState((state, props) => {
+            let reply = {
+                "name": state.user,
+                "date": "XXXXX",
+                // "avatar": "shit",
+                "comment": comment
+            }
+
+            comment = Object.assign({}, state.data[index]);
+            comment.replies.push(reply);
+
+            let updatedData = [
+                ...state.data.slice(0,index),
+                comment,
+                ...state.data.slice(index+1)
+            ]
+
+            return {data: updatedData}
+        });
+        return true;
     }
 
     render(){
@@ -27,6 +61,7 @@ class App extends React.Component{
                         <Comment
                             key={comment.id}
                             data={comment}
+                            addReply={this.addReply}
                         />
                     ))}
                 </div>
