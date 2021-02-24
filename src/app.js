@@ -113,13 +113,16 @@ class App extends React.Component{
         return(
             <IconContext.Provider value={{ size: "1.5em" }}>
                 <div className="main">
-                    <Navbar user={this.state.user}/>
+                    <Navbar
+                        user={this.state.user}
+                        handlePublish={this.publish}
+                    />
 
                     <Publish
                         postValue={this.state.postValue}
-                        addPost={this.publish}
+                        handlePublish={this.publish}
                         handleChangePostValue={this.handleChangePostValue}
-                        showButton={false}
+                        showButton={true}
                     />
 
                     {this.state.data.map((comment)=>(

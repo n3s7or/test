@@ -1,18 +1,17 @@
 import React, {useState} from "react";
-import BtnPublish from "./btnPublish";
 import "./publish.scss";
 
 export default function Publish(props) {
     const {
         postValue,
         handleChangePostValue,
-        addPost,
+        handlePublish,
         showButton
     } = props;
 
     return (
         <section className="border publish">
-            <form onSubmit={addPost}>
+            <form onSubmit={handlePublish}>
                 <input
                     type="text"
                     id="state"
@@ -24,7 +23,11 @@ export default function Publish(props) {
             </form>
             {showButton &&
                 <div className="left border-top">
-                    <BtnPublish onClick={addPost}/>
+                    <a
+                        href="#"
+                        className="button"
+                        onClick={handlePublish}
+                    >Publicar</a>
                 </div>
             }
 
