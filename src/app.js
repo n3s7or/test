@@ -19,11 +19,12 @@ class App extends React.Component{
 
         this.addReply = this.addReply.bind(this);
         this.addReaction = this.addReaction.bind(this);
+        this.publish = this.publish.bind(this);
     }
 
     componentDidMount() {
         this.setState({
-            data: data,
+            // data: data,
             user: 'Juan Perex'
         })
     }
@@ -48,13 +49,11 @@ class App extends React.Component{
             comment = Object.assign({}, state.data[index]);
             comment.replies.push(reply);
 
-            let updatedData = [
-                ...state.data.slice(0,index),
-                comment,
-                ...state.data.slice(index+1)
-            ]
-
-            return {data: updatedData}
+            return {data: [
+                    ...state.data.slice(0,index),
+                    comment,
+                    ...state.data.slice(index+1)
+                ]}
         });
         return true;
     }
@@ -80,12 +79,34 @@ class App extends React.Component{
         }))
     }
 
+    publish(comment) {
+        this.setState((state, props)=> {
+            let newPost = {
+                "id": state.data.length,
+                "name": this.state.user,
+                "date": Date.now(),
+                // "avatar": "shit",
+                "comment": comment,
+                "reactions": 0,
+                "replies": []
+            }
+            return {
+                data: [
+                    ...state.data,
+                    Object.assign({}, state.data, newPost)
+                ]
+            };
+        })
+    }
+
     render(){
         return(
             <IconContext.Provider value={{ size: "1.5em" }}>
                 <div className="main">
                     <Navbar />
-                    <Publish />
+
+                    <Publish addPost={this.publish}/>
+
                     {this.state.data.map((comment)=>(
                         <Comment
                             key={comment.id}
