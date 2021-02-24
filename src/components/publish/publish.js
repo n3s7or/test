@@ -1,27 +1,33 @@
 import React, {useState} from "react";
+import BtnPublish from "./btnPublish";
 import "./publish.scss";
 
-export default function Publish({addPost}) {
-    const [postValue, setPostValue] = useState("")
+export default function Publish(props) {
+    const {
+        postValue,
+        handleChangePostValue,
+        addPost,
+        showButton
+    } = props;
+
     return (
         <section className="border publish">
-            <form onSubmit={e=>{
-                e.preventDefault();
-                addPost(postValue);
-                setPostValue("")
-            }}>
+            <form onSubmit={addPost}>
                 <input
                     type="text"
                     id="state"
                     name="state"
                     placeholder={"Escribe aqui tu estado"}
                     value={postValue}
-                    onChange={(e)=>setPostValue(e.target.value)}
+                    onChange={handleChangePostValue}
                 />
             </form>
-            <div className="left border-top">
-                <a href="#" className="button">Publicar</a>
-            </div>
+            {showButton &&
+                <div className="left border-top">
+                    <BtnPublish onClick={addPost}/>
+                </div>
+            }
+
         </section>
     )
 }

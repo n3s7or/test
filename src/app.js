@@ -14,9 +14,11 @@ class App extends React.Component{
 
         this.state = {
             data: [],
-            user: ''
+            user: '',
+            postValue: ''
         }
 
+        this.handleChangePostValue = this.handleChangePostValue.bind(this);
         this.addReply = this.addReply.bind(this);
         this.addReaction = this.addReaction.bind(this);
         this.publish = this.publish.bind(this);
@@ -27,6 +29,11 @@ class App extends React.Component{
             // data: data,
             user: 'Juan Perex'
         })
+    }
+
+    handleChangePostValue(e) {
+        e.preventDefault();
+        this.setState({postValue: e.target.value})
     }
 
     addReply(commentId, comment) {
@@ -79,14 +86,16 @@ class App extends React.Component{
         }))
     }
 
-    publish(comment) {
+    publish(e) {
+        e.preventDefault();
+
         this.setState((state, props)=> {
             let newPost = {
                 "id": state.data.length,
                 "name": this.state.user,
                 "date": Date.now(),
                 // "avatar": "shit",
-                "comment": comment,
+                "comment": state.postValue,
                 "reactions": 0,
                 "replies": []
             }
@@ -94,7 +103,8 @@ class App extends React.Component{
                 data: [
                     ...state.data,
                     Object.assign({}, state.data, newPost)
-                ]
+                ],
+                postValue: ""
             };
         })
     }
@@ -103,9 +113,14 @@ class App extends React.Component{
         return(
             <IconContext.Provider value={{ size: "1.5em" }}>
                 <div className="main">
-                    <Navbar />
+                    <Navbar user={this.state.user}/>
 
-                    <Publish addPost={this.publish}/>
+                    <Publish
+                        postValue={this.state.postValue}
+                        addPost={this.publish}
+                        handleChangePostValue={this.handleChangePostValue}
+                        showButton={false}
+                    />
 
                     {this.state.data.map((comment)=>(
                         <Comment
