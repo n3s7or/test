@@ -1,4 +1,5 @@
 import React from "react";
+import TimeAgo from "../timeago/timeago";
 import "./comment.scss";
 import Thumbnail from "./60x60.png";
 
@@ -17,7 +18,7 @@ export default function Reply({data}) {
                         <p>{comment}</p>
                     </div>
                 </div>
-                <span className="small">{date}</span>
+                <TimeAgo date={date} />
             </div>
         </div>
     )

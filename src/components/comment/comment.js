@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import Reply from "./reply";
+import TimeAgo from "../timeago/timeago";
 import "./comment.scss";
 import Thumbnail from "./60x60.png";
+
 
 export default function Comment({data, addReply}) {
     let {
@@ -21,7 +23,7 @@ export default function Comment({data, addReply}) {
                 <div className="content">
                     <header>
                         <h4>{name}</h4>
-                        <span className="small">{date}</span>
+                        <TimeAgo date={date}/>
                     </header>
                     <main>
                         <div className="comment-text">

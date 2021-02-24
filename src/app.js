@@ -32,7 +32,7 @@ class App extends React.Component{
         this.setState((state, props) => {
             let reply = {
                 "name": state.user,
-                "date": "XXXXX",
+                "date": Date.now(),
                 // "avatar": "shit",
                 "comment": comment
             }
