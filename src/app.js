@@ -6,7 +6,7 @@ import Publish from "./components/publish/publish";
 import Comment from "./components/comment/comment";
 import {IconContext} from "react-icons";
 
-import data from "./data.json";
+// import data from "./data.json";
 
 class App extends React.Component{
     constructor(props) {
