@@ -89,6 +89,9 @@ class App extends React.Component{
     publish(e) {
         e.preventDefault();
 
+        if (!this.state.postValue)
+            return;
+
         this.setState((state, props)=> {
             let newPost = {
                 "id": state.data.length,
