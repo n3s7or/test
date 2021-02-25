@@ -32,3 +32,17 @@ nav.navbar {
   display: flex;
   flex-direction: column;
 }
+
+@media only screen and (max-width: 767px) {
+  /* phones */
+  .greet {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* tablets and desktop */
+  .dropdown{
+    display: none;
+  }
+}

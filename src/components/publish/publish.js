@@ -5,8 +5,7 @@ export default function Publish(props) {
     const {
         postValue,
         handleChangePostValue,
-        handlePublish,
-        showButton
+        handlePublish
     } = props;
 
     return (
@@ -21,15 +20,14 @@ export default function Publish(props) {
                     onChange={handleChangePostValue}
                 />
             </form>
-            {showButton &&
-                <div className="left border-top">
-                    <a
-                        href="#"
-                        className="button"
-                        onClick={handlePublish}
-                    >Publicar</a>
-                </div>
-            }
+
+            <div className="btn-publish border-top">
+                <a
+                    href="#"
+                    className="button"
+                    onClick={handlePublish}
+                >Publicar</a>
+            </div>
 
         </section>
     )

@@ -27,6 +27,7 @@ export default function Navbar({user, handlePublish}) {
                         >Publicar</a>
                     </div>
                 </li>
+                <li className="greet"><span className="small">Hello {user.split(' ')[0]}!</span></li>
             </ul>
         </nav>
     )

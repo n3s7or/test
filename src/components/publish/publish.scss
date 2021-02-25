@@ -10,8 +10,15 @@ section.publish {
   }
 }
 
-.left {
+.btn-publish {
   display: flex;
   justify-content: end;
   padding: 5px;
+}
+
+@media only screen and (max-width: 767px) {
+  /* phones */
+  .btn-publish {
+    display: none;
+  }
 }

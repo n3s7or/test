@@ -14,6 +14,16 @@ export default function Comment({data, addReply, addReaction}) {
     const [showCommentInput, setShowCommentInput] = useState(replies.length > 0);
     const [commentValue, setCommentValue] = useState("");
 
+    function toReact(e) {
+        e.preventDefault();
+        addReaction(id)
+    }
+
+    function toShowCommentInput(e) {
+        e.preventDefault();
+        setShowCommentInput(true);
+    }
+
     return (
         <section className="comments border">
             {/*Comment container*/}
@@ -31,6 +41,10 @@ export default function Comment({data, addReply, addReaction}) {
                             <p>{comment}</p>
                         </div>
                     </main>
+                    <footer className="comment-actions">
+                        <a href="#" onClick={toReact}>Reaccionar</a>
+                        <a href="#" onClick={toShowCommentInput}>Comentar</a>
+                    </footer>
                 </div>
             </div>
             {/*End comment container*/}
@@ -44,19 +58,13 @@ export default function Comment({data, addReply, addReaction}) {
             }
             {/*End comment summary*/}
 
-            {/*Comments actions*/}
+            {/*Comments actions mobile*/}
             <div className="comment-actions-mobile border-bottom border-top">
-                <a href="#" onClick={(e)=>{
-                    e.preventDefault();
-                    addReaction(id)
-                }}>Reaccionar</a>
+                <a href="#" onClick={toReact}>Reaccionar</a>
 
                 <a className="divider" />
 
-                <a href="#" onClick={(e)=>{
-                    e.preventDefault();
-                    setShowCommentInput(true);
-                }}>Comentar</a>
+                <a href="#" onClick={toShowCommentInput}>Comentar</a>
             </div>
             {/*End comment actions*/}
 
